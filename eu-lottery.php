@@ -3,13 +3,13 @@
 Plugin Name: Lottery Number Generator
 Plugin URI: http://plugins.cbnewsplus.com
 Description: Lottery Number Generator
-Version: 1.1
+Version: 1.2
 Author: Cilene Bonfim 
 Author URI: http://cbnewsplus.com
 */
 
 
-define("EUL_DIR",plugins_url().'/eu-lottery');
+define("EUL_DIR",plugins_url().'/lottery-number-generator');
 
 add_action('init', 'lottery_add_scripts');
 
