@@ -3,7 +3,7 @@
 Plugin Name: Lottery Number Generator
 Plugin URI: http://plugins.cbnewsplus.com
 Description: Lottery Number Generator
-Version: 1.2
+Version: 1.3
 Author: Cilene Bonfim 
 Author URI: http://cbnewsplus.com
 */
@@ -97,9 +97,13 @@ add_action('widgets_init', create_function('', 'return register_widget("EULotter
 function eu_lottery_f($atts){
 	extract( shortcode_atts( array(
 			'number' => '5',
-			'highest' => '60'
+			'highest' => '60',
+			'position' => 'none'
 	), $atts ) );
 	
+
+
+
 	if (get_option('eul_lottery_number') === FALSE) {
 		add_option('eul_lottery_number', $number);
 	}else{
@@ -113,16 +117,50 @@ function eu_lottery_f($atts){
 	
 	echo "<script type=\"text/javascript\"> var euadminAjaxUrl = '".esc_js(admin_url('admin-ajax.php'))."';</script>";
 
+//position float_left, float_right, middle
 
-	echo "<div id='eu-lottery'>"; 
+switch ($position){
+case 'float_left':
+	$style1="<div style='float:left;margin:0 16px 0 0;'>";
+	$style2="</div>";
+	break;
+case 'float_right':
+	$style1="<div style='float:right;margin:0 0 0 16px'>";
+	$style2="</div>";
+	break;
+case 'middle':
+	$style1="<div style='text-align:center;'>";
+	$style2="</div>";
+	break;
+
+case 'left':
+	$style1="<div style='text-align:left;'>";
+	$style2="</div>";
+	break;
+
+case 'right':
+	$style1="<div style='text-align:right;'>";
+	$style2="</div>";
+	break;
+
+
+default:
+	$style="";
+	break;
+}
+
+
+	$code = $style1."<div id='eu-lottery'>"; 
+
 	for($i=0; $i<$number; $i++){
-		echo"	<div class='slots' id='slots_".$i."'>
+		$code .= "	<div class='slots' id='slots_".$i."'>
 				<div class='wrapper'></div>
 				</div>
 			";
 }
-echo "	<input type='button' value='".__('Pick ticket')."' id='lottery-button'>
-		</div>";
+$code .= "	<input type='button' value='".__('Pick ticket')."' id='lottery-button'>
+		</div>".$style2;
+return $code;
 
 }
 add_shortcode('eu-lottery', 'eu_lottery_f');

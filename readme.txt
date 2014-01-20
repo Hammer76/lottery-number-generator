@@ -4,7 +4,7 @@ Donate link: http://cbnewsplus.com
 Tags: lottery, random, numbers, generator, sample, howto
 Requires at least: 3.1.0
 Tested up to: 3.7.1
-Stable tag: 1.2
+Stable tag: 1.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -13,7 +13,10 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Description ==
 
-[eu-lottery number="5" highest="60"]
+[eu-lottery number="5" highest="60" position="none"]
+
+Position: float_left, float_right, middle, left, right
+
 
 output: 5 integer values between 1 & 60 
 restrictions:   highest can not be less then number
@@ -59,6 +62,9 @@ Which languages are included when I install the plugin?
 
 == Changelog ==
 
+= 1.3 =
+* Add position
+
 = 1.2 =
 * Change directory plugin
 
@@ -74,5 +80,5 @@ Which languages are included when I install the plugin?
 
 == Upgrade Notice ==
 
-= 1.2 =
-Lottery Number Generator 1.2
+= 1.3 =
+Lottery Number Generator 1.3
